@@ -191,7 +191,7 @@ The analysis will focus on questions such as:
 
 The Tableau dashboard presents the main findings from our forest fire analysis, including fire frequency by month, environmental clusters, temperature, humidity, and burned area.
 
-![Dashboard](forest_fire_dashboard.png)
+![Forest Fire Dashboard](Dashboard/forest_fire_dashboard.png)
 
 ### Key Findings
 
