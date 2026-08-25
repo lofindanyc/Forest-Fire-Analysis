@@ -187,11 +187,30 @@ The analysis will focus on questions such as:
 
 ---
 
-## Project Status
+## Tableau Dashboard
 
-🚧 **In Progress**
+The Tableau dashboard presents the main findings from our forest fire analysis, including fire frequency by month, environmental clusters, temperature, humidity, and burned area.
 
-This project is being developed as part of the **The Knowledge House Phase 2 Data Analytics Capstone Project**.
+![Dashboard](forest_fire_dashboard.png)
+
+### Key Findings
+
+- Fire activity was highest in August and September.
+- Hotter and drier conditions dominated during the peak fire months.
+- The Hotter & Drier cluster had a slightly higher average burned area than the Cooler & More Humid cluster.
 
 
+#### Dashboard Interpretation
+
+The dashboard shows that forest fire activity peaks in August and September, with most fires occurring under hotter and drier conditions.
+
+The hotter and drier cluster also has a slightly higher average burned area (1.15 vs. 0.99 on the log scale).
+
+Overall, the results suggest that hotter and drier environmental conditions are associated with greater fire activity, while burned area varies across both environmental clusters.
+
+##### Interactive Dashboard
+
+[View the interactive Tableau dashboard]
+
+https://us-east-1.online.tableau.com/t/lbatombo-b2ec00d80d/authoring/forestfires_tableau/Sheet1/Dashboard%201#1
 
