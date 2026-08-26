@@ -342,6 +342,10 @@ TEPP_CAPSTONE_PROJECT/
 
 ## 🎯 Conclusion
 
+## 📊 Final Dashboard
+
+![Forest Fire Analysis: Predicted Burned Area in Northeast Portugal](Dashboard/Final_Dashboard.png)
+
 This project combined exploratory data analysis, preprocessing, Fire
 Weather Index analysis, K-Means clustering, regression analysis, and
 Tableau visualization to better understand forest fire behavior.
