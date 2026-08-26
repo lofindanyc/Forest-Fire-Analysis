@@ -18,16 +18,15 @@ area?**
 
 ## 📊 Dashboard
 
-![Forest Fire Risk & Environmental Conditions
-Dashboard](Dashboard/Final_Dashboard.png)
+![Forest Fire Risk & Environmental Conditions Dashboard](Dashboard/forest_fire_dashboard_LB.png)
 
 ### At a Glance
 
 -   🔥 Fire activity peaks in **August and September**
 -   📈 September records the greatest total burned area
 -   🌡️ Peak fire months are dominated by **hotter and drier conditions**
--   🧩 K-Means found **2 main environmental clusters**
--   🎯 Best clustering result: **K = 2, silhouette score = 0.376**
+-   🧩 K-Means found **3 main environmental clusters**
+-   🎯 Best clustering result: **K = 3**
 -   ⚠️ Weather and fire-weather indicators provide useful context, but
     no single variable strongly explains exact burned area
 
@@ -35,13 +34,13 @@ Dashboard](Dashboard/Final_Dashboard.png)
 
 ## 👥 Team
 
-  Name      Role
+  Name    |     Role
   --------- --------------
-  Palo      Data Analyst - Team Lead - Completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
+  Palo    |  Data Analyst - Team Lead - completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
   
-  Lofinda   Data Analyst - Repo Lead - 
+  Lofinda |  Data Analyst - Repo Lead - 
   
-  Amir      Data Analyst - Model Lead - 
+  Amir    |  Data Analyst - Model Lead - 
 
 ------------------------------------------------------------------------
 
