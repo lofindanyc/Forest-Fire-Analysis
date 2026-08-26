@@ -2,6 +2,8 @@
 
 > **Data Analytics Capstone Project --- The Knowledge House**
 
+(Docs & Resources/Figures/09_Montesinho_Sunrise.png)
+
 This project explores forest fire activity in **Montesinho Natural Park,
 Portugal**, using exploratory data analysis, preprocessing, Fire Weather
 Index variables, K-Means clustering, and Tableau visualization.
