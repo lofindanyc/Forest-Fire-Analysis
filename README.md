@@ -25,7 +25,7 @@ Dashboard](Dashboard/Final_Dashboard.png)
 -   📈 September records the greatest total burned area
 -   🌡️ Peak fire months are dominated by **hotter and drier conditions**
 -   🧩 K-Means found **3 main environmental clusters**
--   🎯 Best clustering result: **K = 3, silhouette score = 0.376**
+-   🎯 Best clustering result: **K = 3**
 -   ⚠️ Weather and fire-weather indicators provide useful context, but
     no single variable strongly explains exact burned area
 
@@ -33,13 +33,13 @@ Dashboard](Dashboard/Final_Dashboard.png)
 
 ## 👥 Team
 
-  Name      Role
+  Name    |     Role
   --------- --------------
-  Palo      Data Analyst - Team Lead - completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
+  Palo    |  Data Analyst - Team Lead - completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
   
-  Lofinda   Data Analyst - Repo Lead - 
+  Lofinda |  Data Analyst - Repo Lead - 
   
-  Amir      Data Analyst - Model Lead - 
+  Amir    |  Data Analyst - Model Lead - 
 
 ------------------------------------------------------------------------
 
