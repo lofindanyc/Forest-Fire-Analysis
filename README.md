@@ -16,8 +16,7 @@ area?**
 
 ## 📊 Dashboard
 
-![Forest Fire Risk & Environmental Conditions
-Dashboard](Dashboard/forest_fire_dashboard_LB.png)
+![Forest Fire Risk & Environmental Conditions Dashboard](Dashboard/forest_fire_dashboard_LB.png)
 
 ### At a Glance
 
@@ -35,9 +34,11 @@ Dashboard](Dashboard/forest_fire_dashboard_LB.png)
 
   Name      Role
   --------- --------------
-  Palo      Data Analyst
-  Lofinda   Data Analyst
-  Amir      Data Analyst
+  Palo      Data Analyst - Team Lead - Completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
+  
+  Lofinda   Data Analyst - Repo Lead - 
+  
+  Amir      Data Analyst - Model Lead - 
 
 ------------------------------------------------------------------------
 
@@ -65,6 +66,9 @@ Fire Weather Index components, and burned area.
   wind         Wind speed
   rain         Rainfall
   area         Forest area burned (hectares)
+  log_area     Log transformed area - Engineered Feature
+  FWI          Fire Weather Index - Engineered Feature
+  BUI          Buildup Index - Engineered Feature
 
 ------------------------------------------------------------------------
 
