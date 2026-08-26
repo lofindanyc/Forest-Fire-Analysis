@@ -17,7 +17,7 @@ area?**
 ## 📊 Dashboard
 
 ![Forest Fire Risk & Environmental Conditions
-Dashboard](Dashboard/forest_fire_dashboard.png)
+Dashboard](Dashboard/forest_fire_dashboard_LB.png)
 
 ### At a Glance
 
