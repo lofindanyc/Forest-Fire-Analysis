@@ -35,9 +35,9 @@ Dashboard](Dashboard/forest_fire_dashboard.png)
 
   Name      Role
   --------- --------------
-  Palo      Data Analyst
-  Lofinda   Data Analyst
-  Amir      Data Analyst
+  Palo      Data Analyst - Team Lead - Completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
+  Lofinda   Data Analyst - Repo Lead - 
+  Amir      Data Analyst - Model Lead - 
 
 ------------------------------------------------------------------------
 
