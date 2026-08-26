@@ -6,9 +6,7 @@
 
 
 This project explores forest fire activity in **Montesinho Natural Park,
-Portugal**, 
-
-using exploratory data analysis, preprocessing, Fire Weather
+Portugal**, using exploratory data analysis, preprocessing, Fire Weather
 Index variables, K-Means clustering, and Tableau visualization.
 
 Our central question was:
@@ -20,6 +18,7 @@ area?**
 ------------------------------------------------------------------------
 
 ## 📊 Dashboard
+<img width="2000" height="1400" alt="image" src="https://github.com/user-attachments/assets/5a099436-1886-4f3c-85c9-13a190b5caa3" />
 
 ![Forest Fire Risk & Environmental Conditions Dashboard](Dashboard/forest_fire_dashboard_LB.png)
 
