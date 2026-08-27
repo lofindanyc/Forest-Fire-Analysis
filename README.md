@@ -37,13 +37,13 @@ area?**
 
 ## 👥 Team
 
-  Name    |     Role
-  --------- --------------
-  Palo    |  Data Analyst - Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and contributed to the project repo as needed.
+  Name           |     Role      |    Contributions
+  -------------    -------------   -------------------
+  Palo Becerra   |  Data Analyst | Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and contributed to the project repo as needed.
   
-  Lofinda |  Data Analyst - Repo Lead - 
+  Lofinda Beynis |  Data Analyst | Repo Lead - 
   
-  Amir    |  Data Analyst - Model Lead - 
+  Amir Benston   |  Data Analyst | Model Lead - 
 
 ------------------------------------------------------------------------
 
