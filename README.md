@@ -54,6 +54,7 @@ Learning Repository.
 
 The raw dataset contains **517 observations and 13 variables**
 describing spatial location, calendar information, weather conditions,
+
 Fire Weather Index components, and burned area.
 
 ### Main Variables
