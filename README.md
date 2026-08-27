@@ -41,7 +41,7 @@ area?**
 -   📈 September records the greatest total burned area
 -   🌡️ Peak fire months are dominated by **hotter and drier conditions**
 -   🧩 K-Means found **3 main environmental clusters**
--   🎯 Best clustering result: **Cluster 1 from K = 3: Hot Dry High Risk Group**
+-   🎯 Best clustering result: **Cluster 1 from K = 3 - Hot Dry High Risk Group**
 -   ⚠️ Weather and fire-weather indicators provide useful context, but
     no single variable strongly explains exact burned area
 
