@@ -26,3 +26,19 @@ https://globalnaturewatch.org
 Global Nature Watch offers the latest data, technology and tools that empower people everywhere to better protect forests and natural ecosystems.
 https://globalnaturewatch.org/map/?menu=eyJkYXRhc2V0Q2F0ZWdvcnkiOiJmb3Jlc3RDaGFuZ2UiLCJtZW51U2VjdGlvbiI6ImRhdGFzZXRzIn0%3D
 
+**Canadian FWI: Forest Fire Danger Rating System (FWI25-26)**
+All info here sourced from Wikepedia and Govt. of Canada
+
+1: https://en.wikipedia.org/wiki/Canadian_Forest_Fire_Weather_Index_System
+
+2: https://publications.gc.ca/collections/collection_2026/rncan-nrcan/Fo123-2-42-2025-eng.pdf
+
+3: https://cwfis.cfs.nrcan.gc.ca/en/background/fwi
+
+The potential for daily ignition is studied and predicted based on lightning-caused and human-caused forest fires.
+
+----------------------------------------------------------------
+According to the latest 2025-2026 FWI publication, there have been some changes made regarding how to calculate and interpet burn data. These are described in part 4.4, page 28. Overall, the shift seems to be a push for collecting and analyzing relevant burn data on an hourly basis, rather than a once daily basis. They acknowledge it as a challenge, based on the sheer volume of data, but because of how often the variables revolving around forest fires (Wind, Temp, Rain, Humidity, etc) shift dramatically by the hour, the results will be more accurate predictions and analysis. 
+
+-----------------------------------------------------------------
+I don't know if this will be applicable to our project, but I believe it's worth looking into and seeing if the data we have can be evaluated as such.

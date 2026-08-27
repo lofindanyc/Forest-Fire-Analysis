@@ -1,23 +1,12 @@
-Canadian FWI: Forest Fire Weather Index System 
-All info here sourced from Wikepedia and Govt. of Canada
-(https://en.wikipedia.org/wiki/Canadian_Forest_Fire_Weather_Index_System)
-(https://cwfis.cfs.nrcan.gc.ca/en/background/fwi)
-(https://publications.gc.ca/collections/collection_2026/rncan-nrcan/Fo123-2-42-2025-eng.pdf)
-
-The potential for daily ignition is studied and predicted based on lightning-caused and human-caused forest fires.
-
-----------------------------------------------------------------
-According to the latest 2025-2026 FWI publication, there have been some changes made regarding how to calculate and interpet burn data. These are described in part 4.4, page 28. Overall, the shift seems to be a push for collecting and analyzing relevant burn data on an hourly basis, rather than a once daily basis. They acknowledge it as a challenge, based on the sheer volume of data, but because of how often the variables revolving around forest fires (Wind, Temp, Rain, Humidity, etc) shift dramatically by the hour, the results will be more accurate predictions and analysis. 
-
 -----------------------------------------------------------------
-I don't know if this will be applicable to our project, but I believe it's worth looking into and seeing if the data we have can be evaluated as such.
------------------------------------------------------------------
+Expanded upon from the original 'ForestFires.names' file from sourced dataset.
+
+Includes engineered features built for further analysis.
 
 *FFMC - Fine Fuel Moisture Code* - Previous FFMC, temp, RH, wind speed and rain
 A numerical rating of the moisture content of litter and other cured fine fuels. 
 Used to represent the potential for human-caused ignition.
 It responds to temperature, relative humidity, wind and rain, and indicates the relative ease of ignition and flammability of fine fuels.
-
 
 *DMC - Duff Moisture Code* - Previous DMC, temp, RH, rain and month of the year
 A numerical rating of the average moisture content of loosely compacted organic layers of moderate depth. 
@@ -33,3 +22,11 @@ It responds to temperature and rain and indicates the effects of seasonal drough
 A numerical rating of the expected rate of fire spread. 
 Higher values indicate faster spread rates.
 It combines wind speed with the FFMC without accounting for the quantity of fuel available for combustion.
+
+*FWI - Fire Weather Index* - Engineered feature.  
+ISI and BUI scores combined into the ultimate numerical rating to evaluate for general fire intensity potential. Originally created by the National Canadian Forest Service.  
+
+*BUI - Buildup Index* - Engineered feature.  
+DMC and DC combined into a numerical rating to evaluate for the cumulative effects of drought and moisture in relation to the FWI System overall. It responds to fuel accumulation as well. 
+
+*Log_area* - Engineered feature. Original ‘Area’ feature was extremely skewed towards 0.00, thus leading to logarithmic transformation for better modeling and evaluation.
