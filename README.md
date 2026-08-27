@@ -53,9 +53,9 @@ area?**
   -------------    -------------   -------------------
   Palo Becerra   |  Data Analyst | Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and contributed to the project repo as needed.
   
-  Lofinda Beynis |  Data Analyst | Repo Lead - 
+  Lofinda Beynis |  Data Analyst | Repo Lead - Set up Repo, Did EDA, dashboarding and an unsupervised learning model
   
-  Amir Benston   |  Data Analyst | Model Lead - 
+  Amir Benston   |  Data Analyst | Model Lead - Did EDA and supervised and unsupervised learning models
 
 ------------------------------------------------------------------------
 
@@ -204,9 +204,8 @@ observations naturally separate into meaningful environmental groups.
 Seven standardized variables were used:
 
 -   FFMC
--   DMC
--   DC
--   ISI
+-   BUI
+-   FWI
 -   Temperature
 -   Relative humidity
 -   Wind
@@ -223,41 +222,32 @@ therefore excluded from the final clustering features.
 
 ### Selecting the Number of Clusters
 
-Solutions from **K = 2 through K = 6** were compared using the elbow
-method and silhouette score.
+Solutions from **K = 1 through K = 7** were compared using the elbow method.
 
 **Best solution:**
 
   Metric             Result
   ------------------ -----------
-  Selected K         **2**
-  Silhouette Score   **0.376**
+  Selected K         **3**
+  Steepest drop is between k = 1 and 2. Every single drop after is less steep and flattens out at K = 3 which is what we choose for the number of clusters.
 
 ### Cluster Interpretation
 
 The two groups were interpreted as:
 
-**Cluster 1 --- Hotter & Drier**
+**Cluster 0 --- Low Risk Category**
 
-Higher temperatures and generally stronger fire-danger conditions.
+Cool temperatures (12.5°C), moderate humidity (45.2%), and the lowest fuel buildup of the three groups (BUI=37.4, FWI=10.4). Containment is the typical outcome here
 
-**Cluster 2 --- Cooler & More Humid**
+**Cluster 1 --- Hot Dry High Risk Category**
 
-Lower temperatures and somewhat higher humidity.
+The dominant cluster, comprising 58% of records. Characterized by high temperatures (22.3°C), the lowest relative humidity (36.6%), and by far the highest fuel buildup (BUI=167.8) and composite fire danger (FWI=37.1). This is the only cluster where measurable fire spread is the *typical* outcome rather than the exception.
 
-After the clusters were created, burned area was compared between them.
+**Cluster 2 --- High Fuel, Humidity Contained Category**
 
-The **Hotter & Drier** cluster showed a slightly higher average burned
-area, but the distributions overlapped substantially.
+ Fuel buildup and fire danger are nearly as high as Cluster 1 (BUI=183.6, FWI=34.3), but relative humidity is nearly double (65.6% vs. 36.6%) and temperatures are notably cooler (16.0°C). Despite comparable fuel and danger scores to Cluster 1, containment not spread is the typical outcome here 
 
-### What This Means
-
-The clustering identifies meaningful environmental profiles, but those
-profiles **do not fully determine how large a fire becomes**.
-
-Cluster assignments are stored in:
-
-`Data/processed/forestfires_with_clusters.csv`
+**Key takeaway:** Comparing Clusters 1 and 2 both have similarly high fuel buildup and composite fire danger scores, yet they differ greatly in typical outcome; spread is typical in Cluster 1 (median 1.04) but not in Cluster 2 (median 0.00). The main distinguishing factor between them is humidity (36.6% vs. 65.6%), suggesting humidity plays a substantial mediating role even when fuel accumulation and danger indices are both high. This interaction is not visible in the univariate correlation heatmap, where RH's linear correlation with area alone was weak (~-0.08).
 
 ------------------------------------------------------------------------
 
