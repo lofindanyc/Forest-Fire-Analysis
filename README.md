@@ -38,7 +38,7 @@ area?**
 
   Name    |     Role
   --------- --------------
-  Palo    |  Data Analyst - Team Lead - completed initial EDA, designed and built Final Dashboard, wrote Final Report, and completed general repo maintenance as needed
+  Palo    |  Data Analyst - Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and maintained the project repository as needed.
   
   Lofinda |  Data Analyst - Repo Lead - 
   
@@ -60,18 +60,31 @@ Fire Weather Index components, and burned area.
   Variable     Description
   ------------ -------------------------------
   X, Y         Spatial coordinates
+  
   month, day   Calendar information
+  
   FFMC         Fine Fuel Moisture Code
+  
   DMC          Duff Moisture Code
+  
   DC           Drought Code
+  
   ISI          Initial Spread Index
+  
   temp         Temperature (°C)
+  
   RH           Relative humidity (%)
+  
   wind         Wind speed
+  
   rain         Rainfall
+  
   area         Forest area burned (hectares)
+  
   log_area     Log transformed area - Engineered Feature
+  
   FWI          Fire Weather Index - Engineered Feature
+  
   BUI          Buildup Index - Engineered Feature
 
 ------------------------------------------------------------------------
