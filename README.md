@@ -6,9 +6,19 @@
 
 
 This project explores forest fire activity in **Montesinho Natural Park,
-Portugal**, using exploratory data analysis, preprocessing, 
+Portugal**, using:
 
-Fire Weather Index variables, K-Means clustering, and Tableau visualization.
+- exploratory data analysis 
+
+- preprocessing 
+
+- Fire Weather Index variables
+
+- K-Means clustering
+
+- Tableau visualization
+
+- Final Report
 
 Our central question was:
 
