@@ -16,6 +16,8 @@ Portugal**, using:
 
 - K-Means clustering
 
+- Regression Modeling
+
 - Tableau visualization
 
 - Final Report
