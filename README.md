@@ -8,9 +8,9 @@
 This project explores forest fire activity in **Montesinho Natural Park,
 Portugal**, using:
 
-- exploratory data analysis 
+- Exploratory Data Analysis 
 
-- preprocessing 
+- Preprocessing 
 
 - Fire Weather Index variables
 
