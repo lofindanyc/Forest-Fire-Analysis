@@ -14,11 +14,11 @@ Portugal**, using:
 
 - Fire Weather Index variables
 
-- K-Means clustering
+- K-Means Clustering
 
 - Regression Modeling
 
-- Tableau visualization
+- Tableau Dashboard
 
 - Final Report
 
@@ -73,9 +73,9 @@ Fire Weather Index components, and burned area.
 
   Variable     Description
   ------------ -------------------------------
-  X, Y         Spatial coordinates
+  X, Y    :     Spatial coordinates
   
-  month, day   Calendar information
+  month, day :  Calendar information
   
   FFMC         Fine Fuel Moisture Code
   
@@ -85,7 +85,7 @@ Fire Weather Index components, and burned area.
   
   ISI          Initial Spread Index
   
-  temp         Temperature (°C)
+  temp    :     Temperature (°C)
   
   RH           Relative humidity (%)
   
