@@ -37,7 +37,7 @@ area?**
 
 ## 👥 Team
 
-  Name           |     Role      |    Contributions
+  **Name         |     Role      |    Contributions**
   -------------    -------------   -------------------
   Palo Becerra   |  Data Analyst | Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and contributed to the project repo as needed.
   
