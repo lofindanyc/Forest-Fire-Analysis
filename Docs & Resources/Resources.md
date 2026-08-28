@@ -41,4 +41,3 @@ The potential for daily ignition is studied and predicted based on lightning-cau
 According to the latest 2025-2026 FWI publication, there have been some changes made regarding how to calculate and interpet burn data. These are described in part 4.4, page 28. Overall, the shift seems to be a push for collecting and analyzing relevant burn data on an hourly basis, rather than a once daily basis. They acknowledge it as a challenge, based on the sheer volume of data, but because of how often the variables revolving around forest fires (Wind, Temp, Rain, Humidity, etc) shift dramatically by the hour, the results will be more accurate predictions and analysis. 
 
 -----------------------------------------------------------------
-I don't know if this will be applicable to our project, but I believe it's worth looking into and seeing if the data we have can be evaluated as such.
