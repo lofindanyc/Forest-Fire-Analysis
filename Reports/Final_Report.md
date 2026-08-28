@@ -8,6 +8,9 @@
 
 ##### Data Analytics Track 2026
 
+<img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/e3e791b3-1131-47c9-b72e-84a01abc071f" />
+
+
 <img width="340" height="280" alt="image" src="https://github.com/user-attachments/assets/c62e015f-645b-4c09-bcb0-f70c9f49fb80" />
 
 
