@@ -8,6 +8,7 @@
 
 ##### Data Analytics Track 2026
 
+<img width="340" height="280" alt="image" src="https://github.com/user-attachments/assets/c62e015f-645b-4c09-bcb0-f70c9f49fb80" />
 
 
 Montesinho Natural Park, Portugal
