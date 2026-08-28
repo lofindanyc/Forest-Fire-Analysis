@@ -1,25 +1,25 @@
-Forest Fire Analysis:
+###### Forest Fire Analysis:
 
-Predicting Burned Area in Northeast Portugal
+#### Predicting Burned Area in Northeast Portugal
 
-[TEPP] Phase 2 Portfolio Project
+## [TEPP] Phase 2 Portfolio Project
 
-TKH Innovations Fellowship Program
+## TKH Innovations Fellowship Program
 
-Data Analytics Track 2026
+## Data Analytics Track 2026
 
 
 
 Montesinho Natural Park, Portugal
 
 
-Amir Benston
+## Amir Benston
 
-Lofinda B. Beynis
+## Lofinda B. Beynis
 
-Palo Becerra, author
+## Palo Becerra, author
 
-August 26, 2026 1
+## August 26, 2026 1
 
 Table of Contents
 
