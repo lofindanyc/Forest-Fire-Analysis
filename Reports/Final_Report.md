@@ -1,12 +1,12 @@
-###### Forest Fire Analysis:
+# Forest Fire Analysis:
 
-#### Predicting Burned Area in Northeast Portugal
+## Predicting Burned Area in Northeast Portugal
 
-## [TEPP] Phase 2 Portfolio Project
+##### [TEPP] Phase 2 Portfolio Project
 
-## TKH Innovations Fellowship Program
+##### TKH Innovations Fellowship Program
 
-## Data Analytics Track 2026
+##### Data Analytics Track 2026
 
 
 
