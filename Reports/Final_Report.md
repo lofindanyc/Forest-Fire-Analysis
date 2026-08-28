@@ -15,75 +15,103 @@
 ##### Lofinda B. Beynis
 ##### Palo Becerra, author
 
-##### August 26, 2026 1
+##### [August 26, 2026 1]
 
 
 # Table of Contents
 
 **0. Data Dictionary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 3**
+
 **1. Detailed EDA & preprocessing decisions . . . . . . . . . . . . . . . . . . . . . . . pg. 4 - 8**
+
 **2. Unsupervised learning approach & findings . . . . . . . . . . . . . . . . . . . . pg. 9 - 12**
+
 **3. Supervised models tested & compared . . . . . . . . . . . . . . . . . . . . . . . . . pg. 12 - 13**
+
 **4. Model selection & rationale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 13**
+
 **5. Detailed results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 13 - 14**
+
 **6. Dashboard interpretation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 14 - 15**
+
 **7. Limitations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 15 - 16**
+
 **8. Recommendations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 16**
 
 ## Figures
 
 **Section 1 Figures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .pg. 5 - 8**
+
 **Section 2 Figures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 9 - 11**
+
 **Section 5 Figure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . pg. 14**
 
-##### August 26, 2026 2
+
+##### [August 26, 2026 2]
 
 
 # Data Dictionary
 
 ###### (Sourced from original dataset, supplemental sources, engineered and transformed features)
 
+
 **1. X :** X-axis spatial coordinate within the Montesinho park map: 1 to 9
+
 **2. Y :** Y-axis spatial coordinate within the Montesinho park map: 2 to 9
+
 **3. Month :** Month of the year: "jan" to "dec". One-hot encoded and numerically encoded for binary
 modeling and filtering in the project. (“month_feb, month_num”)
+
 **4. Day :** Day of the week: "mon" to "sun". One-hot encoded and numerically encoded for binary
 modeling and filtering in the project. (“day_mon, day_num”)
+
 **5. FWI :** Fire Weather Index. Engineered feature.
 ISI and BUI scores combined into the ultimate numerical rating to evaluate for general fire
 intensity potential. Originally created by the National Canadian Forest Service.
+
 **6. BUI :** Buildup Index. Engineered feature.
 DMC and DC combined into a numerical rating to evaluate for the cumulative effects of drought
 and moisture in relation to the FWI System overall. It responds to fuel accumulation as well.
+
 **7. FFMC :** index from the FWI system: 18.7 to 96.20
 Previous FFMC, temp, RH, wind speed and rain combined into a numerical rating of the moisture
 content of litter and other cured fine fuels. Used to represent the potential for human-caused
 ignition. It responds to temperature, relative humidity, wind and rain, and indicates the relative ease
 of ignition and flammability of fine fuels.
+
 **8. DMC :** index from the FWI system: 1.1 to 291.3
 Previous DMC, temp, RH, rain and month of the year combined into a numerical rating of the
 average moisture content of loosely compacted organic layers of moderate depth. Used to assess the
 potential for lightning-caused ignition. It responds to temperature, relative humidity and rain, and
 provides an indication of fuel consumption in moderate duff layers and medium-sized woody
 material.
+
 **9. DC :** index from the FWI system: 7.9 to 860.6
 Previous DC, temp, rain and month of the year combined into a numerical rating of the average
 moisture content of deep, compact organic layers. It responds to temperature and rain and indicates
 the effects of seasonal drought on forest fuels and the potential for smouldering in deep duff layers
 and large logs.
+
 **10. ISI :** index from the FWI system: 0.0 to 56.10
 FFMC and wind speed combined into a numerical rating of the expected rate of fire spread. Higher
 values indicate faster spread rates. It combines wind speed with the FFMC without accounting for
 the quantity of fuel available for combustion.
+
 **11. Temp :** Temperature in Celsius degrees: 2.2 to 33.30
+
 **12. RH :** Relative humidity in %: 15.0 to 100
+
 **13. Wind :** Wind speed in km/h: 0.40 to 9.40
+
 **14. Rain :** Outside rain in mm/m2 : 0.0 to 6.4
+
 **15. Area :** The burned area of the forest (in ha): 0.00 to 1090.84
+
 **16. Log_area :** Engineered feature. Original ‘Area’ feature was extremely skewed towards 0.00, thus
 leading to logarithmic transformation for better modeling and evaluation.
 
-##### August 26, 2026 3
+
+##### [August 26, 2026 3]
 
 
 # 1. Detailed EDA & Preprocessing Decisions
@@ -95,16 +123,24 @@ dataset was sourced from the raw UCI Montesinho Natural Park forest fires datase
 converged on similar core findings, which gave our team confidence that the patterns identified were
 genuine and verifiable. This collaborative approach continued throughout the entire process.
 
+-------------------------------------------
+
+
 ### 1.1 Data Quality
 
 ● The initial dataset consisted of **517** rows and **13** columns.
+
 ● No missing values were found present anywhere in the dataset.
+
 ● 4 exact duplicate rows were identified in the raw data. These were removed by Lofinda during
 her own preprocessing stage, but ultimately left in the consolidated dataset used for supervised
 learning. Amir’s clustering and supervised modeling pipeline used the full 517 rows in addition
 to his engineered features and remained consistent in his analysis.
+
 ● The target variable ‘area’ was extremely right-skewed to equal 0.00.
+
 ● A small number of outlier fires burned several hundred to over 1,000 hectares.
+
 
 ### 1.2 Target Transformation
 
@@ -113,6 +149,7 @@ both visualizations and modeling. The log1p form was chosen specifically to hand
 of zero-area observations, since log(o) is undefined. This transformation was also recommended by the
 dataset’s original authors (Cortez & Morais, 2007).
 
+
 ### 1.3 Feature Engineering
 
 Amir engineered BUI (Buildup Index) and FWI (Fire Weather Index) from the existing composite
@@ -120,9 +157,11 @@ columns by following the official Canadian Forest Fire Weather Index System’s 
 composite indices were not present in the original dataset and became a central point for his modeling
 processes tested and built down the line.
 
+
 ‘Month’ and ‘day’ were also encoded in two ways for separate downstream use: ordinal numeric
 encoding (month_num, day_num) for use in regression/tree models by Amir, and one-hot encoding
 for exploratory grouping and filtering by Lofinda.
+
 
 ### 1.4 Supplemental Visual Findings
 
@@ -159,27 +198,34 @@ the engineered composite features built by Amir, and displayed their relationshi
 *None of the variables showed a strong correlation with area.* The highest score was temperature at only 0.10.
 This foreshadowed a reoccurring theme of our analysis: *no matter how composited, the individual variables offered weak support for predicting burned area.*
 
+
 # 1.5 EDA Figures
 
-##### August 26, 2026 5
+
+##### [August 26, 2026 5]
 
 
 *Figure 1.1* Number of forest fires by month (top) and total burned area by month (bottom).
 
 *Figure 1.2* Raw burned area vs. Frequency (left) and log(area + 1) vs. Frequency (right).
 
-##### August 26, 2026 6
+
+##### [August 26, 2026 6]
+
 
 *Figure 1.3* Distributions of FFMC, DMC, DC, ISI, BUI, FWI, temperature, relative humidity, wind,
 and rain. (from left to right).
 
 *Figure 1.4* FFMC, DMC, DC, and ISI vs. Log(Burned Area+1).
 
-##### August 26, 2026 7
+
+##### [August 26, 2026 7]
+
 
 *Figure 1.5* Temperature vs. FWI (left) and wind vs. FWI (right).
 
 *Figure 1.6* Correlation matrix across weather variables, fire-weather indices, and burned area.
+
 
 ### 1.6 Collaborative Plan of Action
 
@@ -191,7 +237,8 @@ authoring this report. Lofinda created the Github repository and was responsible
 Lofinda also built a Tableau dashboard and after group review, mine was selected as the version for
 submission.
 
-##### August 26, 2026 8
+
+##### [August 26, 2026 8]
 
 
 # 2. Unsupervised Learning Approach & Findings
@@ -200,6 +247,9 @@ To help prevent bias, both Amir and Lofinda independently applied K-Means cluste
 whether fire-weather conditions naturally separated into distinct groups, without using burned area to
 define the clusters. The two approaches used different feature sets and arrived at a different number of
 clusters, but reached otherwise compatible conclusions.
+
+-------------------------------------------------------------------------------------------------------------
+
 
 ### 2.1 Lofinda’s Approach (K = 2)
 
@@ -220,6 +270,7 @@ weather (temp, wind, RH). This differed from Lofinda’s approach in that he sub
 engineered composite indices (BUI, FWI) for the raw underlying composites (DMC, DC, ISI). Amir’s
 elbow method bent somewhere between K=2 and K=4, leading him to select K=3 as the middle point. 
 
+
 **This resulted in 3 distinct clusters:**
 
 |       **Cluster**       |**n**|**Mean Area(ha)**|**Median Area(ha)**|**Avg FFMC**|**Avg BUI**|**Avg FWI**|**Avg Temp (°C)**| 
@@ -235,14 +286,17 @@ With a positive median (1.04) confirming the elevated mean (17.07), Amir verifie
 
 # 2.3 Unsupervised Visual Figures
 
-##### August 26, 2026 9
+
+##### [August 26, 2026 9]
 
 
 *Figure 2.1* Lofinda’s Elbow Method for K-Means results.
 
 *Figure 2.2* Lofinda’s K=2 Clusters charted by Average Fire-Weather Conditions.
 
-##### August 26, 2026 10
+
+##### [August 26, 2026 10]
+
 
 *Figure 2.3* Lofinda’s K=2 Clusters PCA Visualization.
 
@@ -250,7 +304,9 @@ With a positive median (1.04) confirming the elevated mean (17.07), Amir verifie
 
 *Figure 2.5* Amir’s K=3 Clusters charted by Average FWI, RH and Temp °C.
 
-##### August 26, 2026 11
+
+##### [August 26, 2026 11]
+
 
 ### 2.4 Benefits of Two Unsupervised Model Approaches
 
@@ -262,6 +318,7 @@ were associated with more fire spread, but not enough for determination - our gr
 strength rather than a weakness.
 
 
+
 # 3. Supervised Models Tested & Compared
 
 Motivated by his prior experience as a math teacher with regression, and a determination to improve
@@ -269,6 +326,9 @@ upon the model found in the source literature, Amir led the supervised learning 
 goal of building a model that would improve meaningfully on the previous correlations. Eight model
 configurations were tested in total, moving from simple interpretable baselines towards more
 progressively informed feature sets.
+
+---------------------------------------------------------------------------------------------------------
+
 
 # 3.1 Amir’s Ambitious Approach
 
@@ -279,8 +339,9 @@ tested the full FWI System chain with no raw weather at all. Model F (RandomFore
 by adding wind and rain on top of the best base model found so far, and Model G tested adding the
 unsupervised cluster feature on top of the same base.
 
+
 |  **Model** |            **Features**                 |     **Type**      |**MAE (area)**|**RMSE (log)**| **R²** |
-|:----------------------------------------------------:|:-----------------:|:------------:|:------------:|:------:|
+|:----------:|:---------------------------------------:|:-----------------:|:------------:|:------------:|:------:|
 |A           | FWI,temp,FFMC,RH                        | Linear Regression | 19.83        | 1.48         | -0.001 |
 |B           | FWI,FFMC,RH,wind                        | Linear Regression | 19.81        | 1.48         |  0.011 |
 |C           | FFMC,DMC,DC,temp                        | Random Forest     | 19.68        | 1.49         | -0.020 |
@@ -290,6 +351,7 @@ unsupervised cluster feature on top of the same base.
 |F           | fwi_compile features + wind + rain      | Random Forest     | 19.75        | 1.46         |  0.024 |
 |G           | fwi_compile features + cluster          | Random Forest     | 19.42        | 1.44         |  0.057 |
 
+
 ### 3.2 Notable Patterns Across Regression Models
 
 ● All three RandomForest variants built from single/overlapping raw variables (Models C, D, E)
@@ -298,7 +360,7 @@ produced negative R² scores, underperforming even the weak but positive Model B
 performance, suggesting that the limitation here was caused by the dataset rather than any
 model complexity.
 
-##### August 26, 2026 12
+##### [August 26, 2026 12]
 
 ● Fwi_compile (full FWI chain, no raw weather) outperformed every model built specifically for
 the redesign (C, D, E), despite being a simpler feature set. This was the first positive R² during
@@ -321,6 +383,9 @@ model more prone to overfitted noise rather than learning structure.
 Model G (fwi_compile feature set combined with unsupervised cluster label) was selected as the final
 model. It was the best performing model across the entire testing sequence (A-G), and the only
 weather-derived addition to the analysis that improved rather than degraded predictive performance.
+
+-------------------------------------------------------------------------------------------------------
+
 
 ### 4.1 Why Model G Stood Out
 
@@ -347,7 +412,9 @@ largest fire in the test set (actual log(area+1) ≈ 7.0) is predicted at only �
 predicted values ranging from 0 up to ≈2.6, highlighting how the model remained noisy even on the
 fires with no measurable spread.
 
-##### August 26, 2026 13
+
+##### [August 26, 2026 13]
+
 
 Even with the clusters added, Model g’s core weakness persists. It cannot reliably predict large fires.
 Figure 5.1 Predicted vs. Actual Log(Area+1) - Model G.
@@ -369,6 +436,8 @@ review, and keeping presentation in mind, our group selected my own dashboard as
 for submission and presentation. Despite this being my first time using Tableau, I was able to
 effectively tell a cohesive story across our analytical journey.
 
+-----------------------------------------------------------------------------------------------------------------
+
 The selected dashboard included 8 linked visuals that mirror the structure in this report:
 
 ● **Fires by Month / Burned Area by Month:** Established the concentration of fire activity in
@@ -380,7 +449,9 @@ threshold-like) pattern with fire size, and noted that FFMC is itself a composit
 FFMC, temperature, humidity, wind, and rain — motivating Amir’s later engineering of BUI
 and FWI.
 
-##### August 26, 2026 14
+
+##### [August 26, 2026 14]
+
 
 ● **One Cluster Stood Alone / K-3 Clusters:** Amir’s clustering results, showing that Cluster 1
 is the only group where measurable fire spread is the typical outcome, and that humidity —
@@ -389,6 +460,7 @@ not fuel or danger scores alone — differentiated Cluster 1 from Cluster 2.
 highlighted Model G's modest but real improvement.
 ● **Predicted vs. Actual: Model G:** Completed the dashboard with an honest reality check on
 the limits of the best model produced.
+
 
 Note: Since Amir was the sole member of our group able to deliver the presentation in person, I moved
 around the order of the visuals into a structure that he felt most comfortable presenting the dashboard
@@ -404,19 +476,25 @@ fire-index data alone is an incredibly difficult regression problem. Across ever
 tested (linear and nonlinear, raw and composite features, with and without K clusters), no model could
 strongly predict burned areas for Montesinho National Park.
 
+---------------------------------------------------------------------------------------------------------
+
 ● **Weak underlying signals:** No single raw weather variable or FWI indice correlated strongly
 with burned area. The strongest correlation was temp with only 0.10.
+
 ● **Small dataset:** The raw dataset held less than 1,000 rows (518). After preprocessing there were
 only 513 usable observations, with approximately 400 used for training and 100 saved for
 testing after the train/test split. This limited the statistical power available for the final model
 (G) to only predict with mild success.
+
 ● **Extreme skew of target variable:** Nearly half of all the observations had an area=0, with the
 largest fires being outliers among the dataset. Even after compensating with Log(Area+1),
 every model tested vastly underpredicted the large fires.
+
 ● **Feature redundancy across composite indices:** FWI, BUI, FFMC, and many more indices
 were features used in this project. Because of their over-lapping nature, this reduced their
 usefulness in tree-based model building and instead led to increasing noise and potential
 overfitting.
+
 ● **Missing possible additional variables:** The original dataset did not include any other
 meaningful factors related to forest fire risk, such as: fuel types, ignition cause, terrain, fire
 fighters response time, or more. Any supplemental data could have changed the direction of
@@ -428,7 +506,7 @@ Taking a closer look at the limitations of this dataset, time was an underutiliz
 further analysis. The original Montesinho dataset observations only include records for month and day
 of each fire, with weather and fire risk indices representing the daily conditions. In a recent publication
 
-##### August 26, 2026 15
+##### [August 26, 2026 15]
 
 from the Canadian Forest Fire Danger Rating System (FWI25-26) , the update explicitly recommends
 moving from once-per-day weather observations to hourly weather inputs, noting that this allows fire
@@ -468,6 +546,8 @@ classification followed by regression, rather than solely regression.
 
 ### Sources
 
+------------------------------
+
 *UCI Machine Learning Repository — Forest Fires Dataset:* https://archive.ics.uci.edu/dataset/162/forest+fires
 Cortez, P., & Morais, A. (2007). *A Data Mining Approach to Predict Forest Fires using Meteorological Data.*
 Natural Resources Canada (2025). *Canadian Forest Fire Danger Rating System FWI2025 Update, Section 4.4*
@@ -475,4 +555,4 @@ Natural Resources Canada (2025). *Canadian Forest Fire Danger Rating System FWI2
 https://publications.gc.ca/collections/collection_2026/rncan-nrcan/Fo123-2-42-2025-eng.pdf
 *Github Repository:* https://github.com/lofindanyc/Forest-Fire-Analysis
 
-##### August 26, 2026 16
+##### [August 26, 2026 16]
