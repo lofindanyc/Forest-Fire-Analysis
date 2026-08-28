@@ -77,29 +77,29 @@ Fire Weather Index components, and burned area.
   
   month, day :  Calendar information
   
-  FFMC         Fine Fuel Moisture Code
+  FFMC :        Fine Fuel Moisture Code
   
-  DMC          Duff Moisture Code
+  DMC  :        Duff Moisture Code
   
-  DC           Drought Code
+  DC    :       Drought Code
   
-  ISI          Initial Spread Index
+  ISI    :      Initial Spread Index
   
   temp    :     Temperature (°C)
   
-  RH           Relative humidity (%)
+  RH    :       Relative humidity (%)
   
-  wind         Wind speed
+  wind   :      Wind speed
   
-  rain         Rainfall
+  rain   :      Rainfall
   
-  area         Forest area burned (hectares)
+  area   :      Forest area burned (hectares)
   
-  log_area     Log transformed area - Engineered Feature
+  log_area  :   Log transformed area - Engineered Feature
   
-  FWI          Fire Weather Index - Engineered Feature
+  FWI   :       Fire Weather Index - Engineered Feature
   
-  BUI          Buildup Index - Engineered Feature
+  BUI     :     Buildup Index - Engineered Feature
 
 ------------------------------------------------------------------------
 
