@@ -34,9 +34,7 @@ This analysis is intended for **forest management agencies** **park rangers**, a
 
 ------------------------------------------------------------------------
 
-## 📊 Dashboard
-<img width="2000" height="1400" alt="image" src="https://github.com/user-attachments/assets/5a099436-1886-4f3c-85c9-13a190b5caa3" />
-
+## 📊 Dashboard     
 ![Forest Fire Risk & Environmental Conditions Dashboard](Dashboard/Final_Dashboard.png)
 
 ### At a Glance
