@@ -341,7 +341,7 @@ The available dataset captures important weather and fire danger information, bu
 📄 Final Report
 The full written report, including detailed methodology and additional analysis beyond this README, is available at:
 
-`Reports/Final_Report.pdf`
+`Reports/Final_Report.md`
 
 ------------------------------------------------------------------------
 
@@ -387,7 +387,7 @@ TEPP_CAPSTONE_PROJECT/
 │   └── Lofinda_unsupervised_learning.ipynb
 │
 ├── Reports/
-│   └── Final_Report.pdf
+│   └── Final_Report.md
 │
 ├── .gitignore
 └── README.md
