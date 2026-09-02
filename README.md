@@ -263,7 +263,7 @@ Across all eight models, R² ranged from -0.054 to 0.050, meaning even the best 
 
 ### Predicted Burned Area in Northeast Portugal
 
-![Forest Fire Analysis: Predicted Burned Area in Northeast Portugal](Dashboard/Final_Dashboard.png)
+*(See dashboard above)*
 
 This dashboard was the primary visual used in our final presentation. It brings together the EDA, clustering, and regression modeling results into a single view, organized around our central question: **the purpose of this study was to build a model that could predict what caused some fires to burn more area than others.**
 
