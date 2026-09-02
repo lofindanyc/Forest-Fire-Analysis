@@ -29,11 +29,15 @@ seasonal patterns help us understand forest fire activity and burned
 area?**
 
 ------------------------------------------------------------------------
+🎯 Intended Audience
+This analysis is intended for **forest management agencies** **park rangers**, and **regional fire risk planners** who need to prioritize monitoring resources and staffing during the fire season. It may also be useful to **environmental researchers** and **insurers** evaluating how seasonal weather conditions relate to fire risk in similar Mediterranean climate zones. The findings help answer a practical question for these stakeholders: given current weather and fuel conditions, how much elevated attention does a given period or location warrant?
+
+------------------------------------------------------------------------
 
 ## 📊 Dashboard
 <img width="2000" height="1400" alt="image" src="https://github.com/user-attachments/assets/5a099436-1886-4f3c-85c9-13a190b5caa3" />
 
-![Forest Fire Risk & Environmental Conditions Dashboard](Dashboard/forest_fire_dashboard_LB.png)
+![Forest Fire Risk & Environmental Conditions Dashboard](Dashboard/Final_Dashboard_LB.png)
 
 ### At a Glance
 
@@ -42,20 +46,20 @@ area?**
 -   🌡️ Peak fire months are dominated by **hotter and drier conditions**
 -   🧩 K-Means found **3 main environmental clusters**
 -   🎯 Best clustering result: **Cluster 1 from K = 3 - Hot Dry High Risk Group**
+-   📉 Best regression model (G) combined the FWI system with the cluster label, reaching R² = 0.050 modest, but the only configuration to meaningfully outperform a mean prediction         baseline
 -   ⚠️ Weather and fire-weather indicators provide useful context, but
     no single variable strongly explains exact burned area
 
 ------------------------------------------------------------------------
 
 ## 👥 Team
+**Name | Role | Contributions**
+------------- ------------- -------------------
+Palo Becerra | Data Analyst | Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and contributed to the project repo as needed.
 
-  **Name         |     Role      |    Contributions**
-  -------------    -------------   -------------------
-  Palo Becerra   |  Data Analyst | Team Lead - facilitated group discussions to consolidate findings into a shared analysis plan, conducted independent EDA, designed and built the final Tableau dashboard, authored the Final Report, and contributed to the project repo as needed.
-  
-  Lofinda Beynis |  Data Analyst | Repo Lead - Set up Repo, Did EDA, dashboarding and an unsupervised learning model
-  
-  Amir Benston   |  Data Analyst | Model Lead - Did EDA and supervised and unsupervised learning models
+Lofinda Beynis | Data Analyst | Repo Lead - Set up Repo, Did EDA, dashboarding and an unsupervised learning model
+
+Amir Benston | Data Analyst | Model Lead - Led exploratory data analysis, engineered the Fire Weather Index (FWI) and Buildup Index (BUI) features, built and evaluated eight supervised regression models (Linear Regression and Random Forest) comparing raw weather variables against composite fire danger indices, and integrated the unsupervised K-Means cluster label into the final, best performing model.
 
 ------------------------------------------------------------------------
 
@@ -65,9 +69,9 @@ The project uses the **Forest Fires Dataset** from the UCI Machine
 Learning Repository.
 
 The raw dataset contains **517 observations and 13 variables**
-describing spatial location, calendar information, weather conditions,
+describing spatial location, calendar information, weather conditions, Fire Weather Index components, and burned area.
 
-Fire Weather Index components, and burned area.
+------------------------------------------------------------------------
 
 ### Main Variables
 
@@ -106,7 +110,7 @@ Fire Weather Index components, and burned area.
 ## 🔎 Exploratory Data Analysis
 
 EDA was used to understand the structure of the data, identify seasonal
-patterns, examine burned-area behavior, and explore relationships
+patterns, examine burned area behavior, and explore relationships
 between environmental variables.
 
 ### Data Quality
@@ -151,46 +155,31 @@ one weather or Fire Weather Index variable alone**.
 
 ## ⚙️ Data Preprocessing
 
-The preprocessing stage prepared the data for clustering and further
-analysis.
+The preprocessing stage prepared the data for feature engineering, clustering, and regression modeling.
 
 Key steps included:
 
--   Removing 4 duplicate records
--   Confirming no missing values
--   Creating `log_area`
--   One-hot encoding `month` and `day`
--   Preventing target leakage by excluding `area` and `log_area` from
-    the predictor matrix
--   Producing **29 predictor variables**
+- Log transforming the target: `log_area = log(1 + area)`
+- Deriving BUI and FWI from ISI, DMC, and DC (see Fire Weather Index Analysis below)
+- Mapping `month` and `day` to numeric codes for use in modeling
+- Standardizing clustering features (`FFMC`, `BUI`, `FWI`, `temp`, `RH`, `wind`) with `StandardScaler` ahead of K-Means
 
-### Final Processed Data
+This pipeline is the one that fed the final K-Means clustering, regression modeling, and Tableau dashboard presented in this README.
 
-**513 observations × 31 columns**
-
-Primary transformed outcome:
-
-`log_area`
-
-Processed file:
-
-`Data/processed/forestfires_processed.csv`
+> **Note:** A separate preprocessing and clustering pipeline (one-hot encoding, `Lofinda_preprocessing.ipynb` and `Lofinda_unsupervised_learning.ipynb`) was also explored by the team. The pipeline described above is the one used for the final presentation, dashboard, and regression modeling results in this README.
 
 ------------------------------------------------------------------------
 
 ## 🌡️ Fire Weather Index Analysis
 
-The project also includes an extended dataset containing Fire Weather
-Index-related information.
+FWI and BUI were derived directly from the raw fuel moisture codes (FFMC, DMC, DC) and the Initial Spread Index (ISI), following the standard three-tier FWI system calculation rather than relying on a pre existing column.
 
-The analysis explores how weather conditions and FWI components interact
-with forest fire behavior. While these indicators help characterize
-environmental fire conditions, the analysis again shows that **no single
+The analysis explores how these composite indicators relate to forest fire behavior. While they help characterize environmental fire conditions more effectively than raw weather variables alone (see Regression Modeling below), **no single
 feature is a strong standalone explanation of burned area**.
 
 File:
 
-`Data/processed/forestfires_with_fwi.csv`
+`Data/processed/Amir_forestfires_with_fwi.csv`
 
 ------------------------------------------------------------------------
 
@@ -224,17 +213,9 @@ therefore excluded from the final clustering features.
 
 Solutions from **K = 1 through K = 7** were compared using the elbow method.
 
-**Best solution:**
-
-  Metric             Result
-  ------------------ -----------
-  Selected K         **3**
-  Steepest drop is between k = 1 and 2. Every single drop after is less steep and flattens out at K = 3 which is what we choose for the number of clusters.
+**Best solution:** K = 3. The Steepest drop is between k = 1 and 2. Every single drop after is less steep and flattens out at K = 3 which is what we choose for the number of clusters.
 
 ### Cluster Interpretation
-
-The two groups were interpreted as:
-
 **Cluster 0 --- Low Risk Category**
 
 Cool temperatures (12.5°C), moderate humidity (45.2%), and the lowest fuel buildup of the three groups (BUI=37.4, FWI=10.4). Containment is the typical outcome here
@@ -251,46 +232,57 @@ The dominant cluster, comprising 58% of records. Characterized by high temperatu
 
 ------------------------------------------------------------------------
 
+📉 Supervised Learning --- Regression Modeling
+To test whether burned area (modeled as log_area) could be predicted from environmental conditions, eight model configurations were built and compared, ranging from linear regression to Random Forest models with different feature sets. Each was trained on an 80/20 train-test split, using MAE, RMSE (on the log scale), and R² as evaluation metrics.
+
+Model Comparison
+Model Description Algorithm MAE (area) RMSE (log) R²
+------- ------------------------------------------------ --------------- ------------ ------------ --------
+A FWI + temp + FFMC + RH Linear 19.832 1.483 -0.001
+B FWI + FFMC + RH + wind Linear 19.808 1.475 0.011
+C FFMC + DMC + DC + temp Random Forest 19.681 1.497 -0.020
+D temp + ISI + BUI + FWI Random Forest 19.979 1.522 -0.054
+E Full fire-index set + temp Random Forest 19.752 1.496 -0.018
+fwi_compile Full FWI chain, no raw weather Random Forest 19.450 1.452 0.041
+F fwi_compile + wind + rain Random Forest 19.747 1.464 0.024
+G fwi_compile + K-Means cluster label (best model) Random Forest 19.422 1.440 0.050
+
+Key Findings
+Raw weather variables consistently hurt performance. Adding temp to the fire index chain (Model E) dropped R² from 0.041 to -0.018; adding wind and rain (Model F) dropped it to 0.024. The full FWI system already captures the weather signal that matters layering raw weather back on top adds noise rather than help.
+
+Random Forest did not outperform Linear Regression on raw features. Models C, D, and E all returned negative R², underperforming even the weak but positive linear baseline (Model B, R² = 0.011). Increasing model flexibility did not compensate for limited signal in the underlying data.
+
+The unsupervised cluster label was the single addition that improved performance. Model G the same FWI based feature set as the best baseline, plus the K-Means cluster assignment was the only configuration across the entire comparison to improve on its base model rather than degrade it, reaching the best overall R² of 0.050.
+
+Predicted vs. actual results show a consistent weakness across all models: even the best model (G) struggles to catch the rare, large fires the largest actual burned area (log_area ≈ 7.0) was predicted at only ≈ 3.3 and it also overestimates the many near zero burned area days.
+
+Interpretation
+Across all eight models, R² ranged from -0.054 to 0.050, meaning even the best performing model explains only about 5% of the variance in burned area. This is consistent with the weak univariate correlations found during EDA and reflects the well documented difficulty of this dataset. The clearest actionable finding is that composite fire danger indices (the FWI system) outperform raw weather variables as predictors, and that unsupervised clustering on weather/fuel conditions adds a small but consistent improvement beyond any individual raw or composite feature alone.
+
+------------------------------------------------------------------------
+
 ## 📈 Tableau Analysis
 
-### Forest Fire Risk & Environmental Conditions Dashboard
+### Predicted Burned Area in Northeast Portugal
 
-The primary dashboard communicates the relationship between seasonality,
-environmental clusters, and burned area.
+![Forest Fire Analysis: Predicted Burned Area in Northeast Portugal](Dashboard/Final_Dashboard.png)
+
+This dashboard was the primary visual used in our final presentation. It brings together the EDA, clustering, and regression modeling results into a single view, organized around our central question: **the purpose of this study was to build a model that could predict what caused some fires to burn more area than others.**
 
 It includes:
 
--   Fire frequency by month
--   Average burned area by cluster
--   Humidity vs. burned area
--   Temperature vs. burned area
+- **Correlation heatmap** — no single weather variable or fire index correlated strongly with burned area; the strongest was temperature at only 0.10
+- **Cluster median burned area** — Cluster 1 stood alone as the only group where measurable fire spread was the typical outcome (median 1.09 ha), versus 0.00 in the other two clusters
+- **Forest fires by month** — August and September account for the large majority of fire activity, consistent with our EDA findings
+- **Burned area by month** — September posted the highest total burned area (3,086 ha), despite August having more individual fires
+- **Regression model comparison (Models A–G)** — visualizes the R² of all eight models tested; every raw feature model scored at or below zero, and **Model G**, which added the K-Means cluster label to the FWI feature set, was the only model to post a meaningfully positive R²
+- **FFMC vs. log(area + 1)** — of all raw variables tested, the FFMC composite index showed the clearest (though still weak) relationship with burned area
+- **Cluster feature profiles (K = 3)** — average FWI, relative humidity, and temperature by cluster, showing the same Hot/Dry vs. Humid/Contained pattern found in the EDA
+- **Predicted vs. actual (Model G)** — visualizes our best model's performance; even Model G consistently under predicted the largest fires
 
 ### Dashboard Findings
 
-The dashboard shows that:
-
--   August and September dominate forest fire activity
--   Peak fire months contain many Hotter & Drier observations
--   Hotter & Drier conditions have a slightly higher average log burned
-    area (**1.15 vs. 0.99**)
--   Considerable variation remains within both clusters
-
-### Additional Forest Fire Analysis
-
-The `Forest_Fire_Analysis_PD` Tableau analysis provides additional views
-of:
-
--   Fire activity by month
--   Burned area by month
--   Correlation patterns
--   FWI-related features
--   Cluster comparisons
--   Regression-model comparisons
--   Predicted vs. actual burned-area results
-
-The additional analysis reinforces the central finding that **exact
-burned area is difficult to predict from the available environmental
-variables**.
+The dashboard reinforces the central finding across the entire project: **the FWI system outperformed raw weather variables as a predictor, and even after applying K-Means clusters to our best model (Model G), we were only able to build a weak regression model.** No single variable, index, or model configuration reliably predicted fire size; grouped risk clusters came closest, but even that improvement was modest.
 
 ------------------------------------------------------------------------
 
@@ -310,16 +302,48 @@ amount of land burned.
 
 ### Machine Learning Insight
 
-K-Means successfully separates the observations into interpretable
-environmental groups, but substantial overlap in burned-area outcomes
-remains between the clusters.
+K-Means successfully separates the observations into interpretable environmental groups, and integrating that cluster label into a regression model produced the best performing predictor of burned area tested (R² = 0.050) though substantial overlap in burned area outcomes remains between clusters, and no model reliably predicts the rare, large fires.
 
-### Main Limitation
+## Main Limitation
 
-The available dataset captures important weather and fire-danger
-information, but forest fire severity is complex. Factors not
-represented in the dataset may also influence how large an individual
-fire becomes.
+The available dataset captures important weather and fire danger information, but forest fire severity is complex. Factors not represented in the dataset such as fuel type, ignition cause, terrain, or firefighting response time — may also influence how large an individual fire becomes.
+
+------------------------------------------------------------------------
+
+🎯 Recommendations
+- Prioritize monitoring resources during August and September, and specifically during periods matching the Cluster 1 profile (temperatures above ~20°C, relative humidity below ~40%), since this is the only environmental profile where measurable fire spread is the typical outcome rather than the exception.
+
+- Track humidity as a leading indicator, not just temperature or fuel buildup; Clusters 1 and 2 show nearly identical fuel and danger scores but sharply different outcomes, with humidity as the main distinguishing factor.
+
+- Use the composite FWI system, not raw weather readings, as the basis for any operational risk scoring, since raw weather variables consistently degraded model performance relative to the derived fire danger indices.
+
+- Treat exact burned area predictions with caution. Given the best model explains only ~5% of variance, use these models for relative risk categorization (e.g., "elevated risk period") rather than for forecasting a specific expected burned area.
+
+------------------------------------------------------------------------
+
+🔭 Limitations & Next Steps
+**Limitations:**
+
+- No single environmental variable or model configuration strongly predicts exact burned area (best R² = 0.050).
+
+- The dataset lacks fuel-type, ignition-cause, terrain, and response-time variables that likely influence fire severity.
+
+- The test set is relatively small (n ≈ 104), so model comparisons should be interpreted cautiously.
+
+**Next Steps:**
+
+- Test gradient boosting methods (e.g., XGBoost, LightGBM) to see whether they capture non linear interactions better than Random Forest did here.
+
+- Incorporate additional data sources, such as satellite derived vegetation indices or historical ignition records, if available.
+
+- Explore classification instead of regression (e.g., "fire vs. no fire" or risk tier) given how difficult exact burned area prediction proved to be.
+
+------------------------------------------------------------------------
+
+📄 Final Report
+The full written report, including detailed methodology and additional analysis beyond this README, is available at:
+
+`Reports/Final_Report.pdf`
 
 ------------------------------------------------------------------------
 
@@ -329,31 +353,46 @@ fire becomes.
 TEPP_CAPSTONE_PROJECT/
 │
 ├── Dashboard/
-│   ├── Forest_Fire_Analysis_PD.pdf
-│   ├── Forest_Fire_Analysis_PD.twb
-│   ├── forest_fire_dashboard.png
-│   └── forestfires_tableau.csv
+│   ├── Final_Dashboard.png
+│   ├── forest_fire_dashboard_LB.png
+│   └── forestfires_tableau_LB.csv
 │
 ├── Data/
 │   ├── processed/
-│   │   ├── forestfires_processed.csv
-│   │   ├── forestfires_with_clusters.csv
-│   │   └── forestfires_with_fwi.csv
+│   │   ├── Amir_forestfires_with_fwi.csv
+│   │   ├── Lofinda_forestfires_processed.csv
+│   │   └── Lofinda_forestfires_with_clusters.csv
 │   └── raw/
 │       └── forestfires.csv
 │
 ├── Docs & Resources/
+│   ├── Data Dictionary
+│   ├── forestfires.names
+│   ├── Requirement.md
+│   ├── Resources.md
+│   └── Figures/
+│       ├── 01_area_distribution.png
+│       ├── 02_feature_histograms.png
+│       ├── 03_weather_vs_fwi.png
+│       ├── 04_correlation_heatmap.png
+│       ├── 05_elbow_method.png
+│       ├── 06_predicted_vs_actual.png
+│       ├── 07_FWI flowchart.png
+│       ├── 08_FWI rating system.png
+│       └── 09_Montesinho_Sunrise.png
 │
 ├── Notebooks/
-│   ├── amir_eda.ipynb
-│   ├── lofinda-eda.ipynb
+│   ├── amir_fire_severity_modeling.ipynb
+│   ├── Lofinda_eda.ipynb
 │   ├── Palo_eda.ipynb
-│   ├── preprocessing.ipynb
-│   └── unsupervised_learning.ipynb
+│   ├── Lofinda_preprocessing.ipynb
+│   └── Lofinda_unsupervised_learning.ipynb
+│
+├── Reports/
+│   └── Final_Report.pdf
 │
 ├── .gitignore
 └── README.md
-```
 
 ------------------------------------------------------------------------
 
@@ -367,22 +406,21 @@ TEPP_CAPSTONE_PROJECT/
 
 ## 🎯 Conclusion
 
-## 📊 Final Dashboard
-
-![Forest Fire Analysis: Predicted Burned Area in Northeast Portugal](Dashboard/Final_Dashboard.png)
-
 This project combined exploratory data analysis, preprocessing, Fire
 Weather Index analysis, K-Means clustering, regression analysis, and
 Tableau visualization to better understand forest fire behavior.
 
 The analysis identified a strong seasonal pattern, with fire activity
-concentrated in **August and September**. K-Means also revealed distinct
-environmental profiles, particularly hotter/drier and cooler/more-humid
-conditions.
+concentrated in **August and September**. K-Means also revealed
+distinct environmental profiles, particularly hotter/drier and
+cooler/more-humid conditions, and integrating that cluster label into
+a regression model (Model G) produced the best performing predictor
+tested across eight configurations, though it still explained only
+about 5% of the variance in burned area (R² = 0.050).
 
 However, the correlation and regression analyses showed that
 **predicting exact burned area remains challenging**. The available
-weather and fire-weather variables provide useful information about the
+weather and fire weather variables provide useful information about the
 conditions associated with forest fires, but they have limited ability
 to explain the severity of an individual fire.
 
