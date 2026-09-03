@@ -115,9 +115,6 @@ between environmental variables.
 
 -   **517** original observations
 -   **0 missing values**
--   **4 exact duplicate rows**
--   **513 observations** remained after duplicate removal
-
 ### Burned Area
 
 Burned area is highly right-skewed. Most fires burned relatively small
@@ -164,7 +161,7 @@ Key steps included:
 
 This pipeline is the one that fed the final K-Means clustering, regression modeling, and Tableau dashboard presented in this README.
 
-> **Note:** A separate preprocessing and clustering pipeline (one-hot encoding, `Lofinda_preprocessing.ipynb` and `Lofinda_unsupervised_learning.ipynb`) was also explored by the team. The pipeline described above is the one used for the final presentation, dashboard, and regression modeling results in this README.
+> **Note:** A separate preprocessing and clustering pipeline (one-hot encoding, [`Lofinda_preprocessing.ipynb`](Notebooks/Lofinda_preprocessing.ipynb) and [`Lofinda_unsupervised_learning.ipynb`](Notebooks/Lofinda_unsupervised_learning.ipynb)) was also explored by the team. The pipeline described above is the one used for the final presentation, dashboard, and regression modeling results in this README.
 
 ------------------------------------------------------------------------
 
@@ -177,7 +174,7 @@ feature is a strong standalone explanation of burned area**.
 
 File:
 
-`Data/processed/Amir_forestfires_with_fwi.csv`
+[`Data/processed/Amir_forestfires_with_fwi.csv`](Data/processed/Amir_forestfires_with_fwi.csv)
 
 ------------------------------------------------------------------------
 
@@ -341,7 +338,7 @@ The available dataset captures important weather and fire danger information, bu
 📄 Final Report
 The full written report, including detailed methodology and additional analysis beyond this README, is available at:
 
-`Reports/Final_Report.md`
+[`Reports/Final_Report.md`](Reports/Final_Report.md)
 
 ------------------------------------------------------------------------
 
